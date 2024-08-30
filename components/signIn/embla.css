@@ -1,0 +1,28 @@
+.embla {
+  max-width: 100%; /* Adjust as needed */
+  margin: auto;
+  overflow: hidden;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  background-color: beige;
+  position: relative; /* Ensures that the image fills the slide */
+  flex: 0 0 100%; /* Ensure the slide takes full width */
+  height: 100%; /* Ensure the slide takes full height */
+  box-sizing: border-box; /* Include padding in the element’s total width and height */
+}
+
+.embla__image {
+  flex-shrink: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
