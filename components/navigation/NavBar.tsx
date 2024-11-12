@@ -86,7 +86,6 @@ export default async function NavBar() {
           <div className="flex items-center hover:underline">
             <Link className="flex space-x-4 items-center" href="/sign-in">
               <UserRoundPlus height={15}></UserRoundPlus>
-              <p className="mb:hidden"> Sign In</p>
             </Link>
           </div>
         )}
@@ -99,10 +98,21 @@ export default async function NavBar() {
             <DropdownMenuContent>
               <DropdownMenuLabel>My Account</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Billing</DropdownMenuItem>
-              <DropdownMenuItem>Team</DropdownMenuItem>
-              <DropdownMenuItem>Subscription</DropdownMenuItem>
+              <DropdownMenuItem>
+                <Link href={"/user"}>Property</Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem>
+                <Link href={"/agent"}>Agent</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem>
+                {" "}
+                <Link href={"/property"}>Sell</Link>
+              </DropdownMenuItem>
+
+              <DropdownMenuItem>
+                <Link href={"/property"}>Rent</Link>
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

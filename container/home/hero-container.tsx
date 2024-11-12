@@ -65,10 +65,12 @@ export default function HomeHero() {
             with no commission
           </h2>
 
-          <div className="mt-5">
-            <div className="h-10 px-5
+          <div className="mt-5 sm:mt-10">
+            <div
+              className="h-10 px-5
              rounded-t-md w-[20rem] text-[14px] font-montreal
-              flex space-x-[1px] md:ml-10">
+              flex space-x-[1px] md:ml-10 sm:ml-5"
+            >
               <button
                 className={`w-full px-1 py-2 rounded-t-md bg-[#f5f8f59e] backdrop-blur-md
                  hover:bg-white/80 ${filters.type === "0" ? "bg-white" : ""}`}
@@ -105,8 +107,10 @@ export default function HomeHero() {
                 className="flex sm:flex-col sm:space-y-3 md:space-x-5 items-center w-full 
               h-full px-10 font-montreal font-[400]"
               >
-                <div className="md:flex-1 lg:flex-auto lg:w-[65%] 
-                sm:w-full flex sm:flex-col sm:mt-5 sm:space-y-2 justify-between lg:space-x-5 ">
+                <div
+                  className="md:flex-1 lg:flex-auto lg:w-[65%] 
+                sm:w-full flex sm:flex-col sm:mt-5 sm:space-y-2 justify-between lg:space-x-5 "
+                >
                   <div className="flex-1">
                     <Select
                       value={filters.category}
@@ -143,8 +147,10 @@ export default function HomeHero() {
                     </Select>
                   </div>
                 </div>
-                <div className="md:flex-1 lg:flex-auto sm:w-full lg:w-[35%] 
-                sm:flex-col sm:space-y-2 flex md:space-x-5 justify-between">
+                <div
+                  className="md:flex-1 lg:flex-auto sm:w-full lg:w-[35%] 
+                sm:flex-col sm:space-y-2 flex md:space-x-5 justify-between"
+                >
                   <div className="bg-yellow-200 w-full overflow-hidden group">
                     <button
                       onClick={() => setOpenDialog(true)}
