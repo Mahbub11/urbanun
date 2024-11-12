@@ -2,7 +2,7 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { z } from "zod";
+import { number, z } from "zod";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -17,44 +17,158 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import FileUpload from "./FileUpload";
-import { PropertySchema } from "@/types/property-items";
-import { useState } from "react";
+import { PropertyWithImages, PropertySchema } from "@/types/property-items";
+import { useEffect, useState } from "react";
 import axiosInstance from "@/lib/axios";
+import { supabase } from "@/utils/supabase/client";
+import Image from "next/image";
+import { CircleX, Delete, DeleteIcon, OctagonX } from "lucide-react";
+import { Card } from "../ui/card";
+import {
+  useSaveImag,
+  useUpdateProperty,
+} from "@/app/services/property/mutations";
+import { ImageSchema } from "@/types/image-schema";
+import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
 
-export function AddListing() {
-  const [images, setImages] = useState<FileList[]>([]);
+interface propsPass {
+  listingData: PropertyWithImages;
+}
 
-  const form = useForm<z.infer<typeof PropertySchema>>({
-    resolver: zodResolver(PropertySchema),
+export function AddListing({ listingData }: propsPass) {
+  const [images, setImages] = useState<File[]>([]);
+  const [status, setStatus] = useState(false);
+  const [currentData, setCurrentData] = useState(listingData);
+
+  const updatePropertyMutation = useUpdateProperty();
+  const savePropertyImageMutation = useSaveImag();
+
+  // const dd = useProperty([listingData.id]);
+  // const { data, refetch,isLoading } = dd[0];
+
+  // console.log(listingData);
+  // useEffect(() => {
+  //   if (status) {
+  //     refetch().then((res) => {
+  //       const responseData = res.data;
+  //       // if (responseData) {
+  //       //   setCurrentData(responseData)
+  //       // }
+  //     });
+
+  //     //  window.location.reload();
+
+  //     setStatus(false);
+  //   }
+  // }, [status, refetch]);
+
+  const form = useForm<PropertySchema>({
+    //  resolver: zodResolver(PropertySchema),
     defaultValues: {
-      title: "",
-      description: "",
-      // Add more fields as needed.
+      id: listingData.id,
+      type: listingData.type ?? 0,
+      title: listingData.title ?? "",
+      description: listingData.description ?? "",
+      property_features: listingData.property_features ?? "",
+      size: listingData.size ?? "",
+      bed_rooms: listingData.bed_rooms ?? "",
+      bath_rooms: listingData.bath_rooms ?? "",
+      floor: listingData.floor ?? "",
+      construction_year: listingData.construction_year ?? "",
+      price: listingData.price ?? 0,
     },
+    mode: "onChange",
   });
 
-  const onSubmit=async(values: z.infer<typeof PropertySchema>)=> {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+  const uploadImage = async () => {
+    for (const image of images) {
+      // Generate file name and get file extension
+      const fileName = Date.now().toString();
+      const fileExt = image.name.split(".").pop();
 
-    const newVal={id:1,...values}
-    console.log(newVal);
-    if(images.length > 0) {
-      console.log('Add image')
+      // Upload image to Supabase
+      const { error: uploadError } = await supabase.storage
+        .from("propertyImages")
+        .upload(`${fileName}`, image, {
+          contentType: `image/${fileExt}`,
+          upsert: false,
+        });
+
+      if (uploadError) {
+        console.log("Error uploading image:", uploadError);
+        continue; // Skip to next image on error
+      }
+
+      // Construct image URL
+      const imageUrl = process.env.NEXT_PUBLIC_IMAGE_URL + fileName;
+
+      // Prepare image data for saving
+      const imgData = {
+        imageUrl: imageUrl,
+        listingId: listingData.id,
+        type: 1,
+      };
+
+      // Save image data using mutation
+      await savePropertyImageMutation.mutateAsync(imgData);
+    }
+  };
+  const onSubmit = async (values: PropertySchema) => {
+    console.log(values);
+    try {
+      // Update the property
+
+      const formattedValues = {
+        ...values,
+        id: listingData.id,
+        price: Number(values.price),
+        type: Number(values.type), // Overwrite `type` with a number
+      };
+
+   //   await updatePropertyMutation.mutateAsync(formattedValues);
+
+      console.log(updatePropertyMutation);
+      // Upload images
+
+      // Set status to trigger reloading
+      setStatus(true);
+    } catch (error) {
+      console.log("Error submitting property:", error);
+    }
+  };
+
+  const handleImageDelete = async (value: number) => {
+    const getImageData = listingData.images.filter(
+      (image) => image.id === value
+    )[0];
+
+    const urlParts = getImageData.imageUrl.split("/");
+    const lastSegment = urlParts[urlParts.length - 1];
+    const { data, error } = await supabase.storage
+      .from("propertyImages")
+      .remove([`${lastSegment}`]);
+
+    if (error) {
+      console.log(error);
+    }
+    if (data) {
+      const data = {
+        id: getImageData.id,
+      };
+      await axiosInstance
+        .delete("/property/image", { data })
+        .then((res) => {
+          console.log(res);
+          setStatus(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
 
-    await axiosInstance.put('/property',newVal).then((res)=>{
-      console.log(res)
-      //router.replace('/edit-listing/'+res.data.id);
-    }).catch((err)=>{
-      console.log(err)
-    })
+    console.log("Extracted ID from URL:", lastSegment);
+  };
 
-    
-
-
-  }
-  console.log(images);
   return (
     <div className="mt-10">
       <Form {...form}>
@@ -63,12 +177,52 @@ export function AddListing() {
           className="space-y-2 flex-col"
         >
           <div className="flex space-x-10">
-            <div className="w-[50%]">
+            <div className="w-[50%] ">
+              <FormField
+                control={form.control}
+                name="type"
+                render={({ field }) => (
+                  <FormItem className="">
+                    <div>
+                      <div>
+                        <h2 className="font-[500]">Select Property Type</h2>
+                      </div>
+
+                      <div className="w-[10rem]  px-2 py-2 ml-[-7px]">
+                        <div className="w-full flex space-x-[1.6rem] ">
+                          <FormLabel htmlFor="field-rain">For Sell</FormLabel>
+                          <Input
+                            className="h-[1rem] w-[1rem]"
+                            type="radio"
+                            value="1"
+                            id="field-rent"
+                            // Manually handle the `checked` attribute
+                            checked={field.value.toString() === "0"}
+                            onChange={() => field.onChange(1)}
+                          />
+                        </div>
+                        <div className="w-full flex space-x-5 mt-2">
+                          <FormLabel htmlFor="field-rain">For Rent</FormLabel>
+                          <Input
+                            className="h-[1rem] w-[1rem]"
+                            type="radio"
+                            value="1"
+                            id="field-rent"
+                            // Manually handle the `checked` attribute
+                            checked={field.value.toString() === "1"}
+                            onChange={() => field.onChange(2)}
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </FormItem>
+                )}
+              ></FormField>
               <FormField
                 control={form.control}
                 name="title"
                 render={({ field }) => (
-                  <FormItem>
+                  <FormItem className="mt-3">
                     <FormLabel>Title</FormLabel>
                     <FormControl>
                       <Input placeholder="Title of the Property" {...field} />
@@ -212,8 +366,40 @@ export function AddListing() {
                 <h2>Property Images</h2>
                 <FileUpload
                   images={images}
-                  setImages={(value) => setImages((prev) => [...prev, value])}
+                  uploadImage={uploadImage}
+                  setImages={(value) =>
+                    setImages((prev) => [...prev, ...value])
+                  }
                 ></FileUpload>
+              </div>
+
+              <div className="mt-10">
+                <div className="flex flex-wrap space-x-3">
+                  {currentData.images?.map((imageUrl) => (
+                    <Card
+                      className="relative overflow-hidden"
+                      key={imageUrl.imageUrl}
+                    >
+                      <CircleX
+                        stroke="#FFFF"
+                        onClick={() => handleImageDelete(imageUrl.id)}
+                        className="absolute shadow-md 
+                        hover:bg-red-300 bg-transparent/40 rounded-full cursor-pointer top-2 right-2  text-white
+                         transition-colors"
+                      >
+                        {/* Hypothetical delete icon */}
+                      </CircleX>
+
+                      <Image
+                        src={imageUrl.imageUrl}
+                        alt={"Image"}
+                        className="object-cover h-[10rem] w-[10rem]"
+                        width={700}
+                        height={700}
+                      />
+                    </Card>
+                  ))}
+                </div>
               </div>
 
               {/* <div className="mt-5">
@@ -223,6 +409,7 @@ export function AddListing() {
               </div> */}
             </div>
           </div>
+
           <Button className="mt-10 w-full" type="submit">
             Submit
           </Button>

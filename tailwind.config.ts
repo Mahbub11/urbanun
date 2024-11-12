@@ -5,6 +5,7 @@ const config = {
   content: [
     './pages/**/*.{ts,tsx}',
     './components/**/*.{ts,tsx}',
+    './container/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
@@ -18,7 +19,14 @@ const config = {
       },
     },
     fontFamily: {
-      moder: ['var(--moder)']
+      moder: ['var(--moder)'],
+      monda:['Monda'],
+      suse:['suse'],
+      montreal: ["NeueMontreal", "sans-serif"],
+      nm: ["NM", "sans-serif"],
+      fg: ["FG", "sans-serif"],
+      gmvf: ["GMVF", "sans-serif"],
+      gvf: ["GVF", "sans-serif"],
     },
     fontWeight: {
       regular: "400",
@@ -36,7 +44,9 @@ const config = {
       "4xl": ["4rem", { lineHeight: "4.8125rem" }]
     },
     extend: {
+     
       colors: {
+       
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -70,6 +80,22 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        custom: {
+          btn_color:"#7065F0",
+          light: "#F0F4F8",
+          dark: "#1A202C",
+          primary: "#2B6CB0",
+          secondary: "#D53F8C",
+          success: "#48BB78",
+          warning: "#F6E05E",
+          error: "#F56565",
+          info: "#3182CE",
+          muted: "#E2E8F0",
+          white: "#FFFFFF",
+          black: "#000000",
+          custom_black:"201E43",
+          text_gray:"rgb(68 70 71 )"
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -89,6 +115,13 @@ const config = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+      },
+      screens: {
+        sm: { min: "360px", max: "768px" },
+        md: { min: "769px"},
+        lg: { min: "1024px" },
+        xl: { min: "1491px" },
+      
       },
     },
   },

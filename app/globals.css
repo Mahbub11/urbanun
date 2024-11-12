@@ -1,7 +1,40 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@font-face {
+  font-family: 'Monda';
+  src: url('../public/fonts/Monda-VariableFont_wght.ttf');
+}
+@font-face {
+  font-family: 'suse';
+  src: url('../public/fonts/SUSE-VariableFont_wght.ttf');
+}
+.body,html{
+  height:100%
+}
 
+@font-face {
+  src: url("../public/fonts/PPNeueMontreal.woff");
+  font-family: NeueMontreal;
+}
+@font-face {
+  src: url("../public/fonts/NeueMontreal.woff");
+  font-family: NM;
+}
+@font-face {
+  src: url("../public/fonts/FoundersGrotesk.woff");
+  font-family: FG;
+}
+
+@font-face {
+  src: url("../public/fonts/GeistMonoVF.woff");
+  font-family: GMVF;
+}
+
+@font-face {
+  src: url("../public/fonts/GeistVF.woff");
+  font-family: GVF;
+}
 @layer base {
   :root {
     --background: 0 0% 100%;

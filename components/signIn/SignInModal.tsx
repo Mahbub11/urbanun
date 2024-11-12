@@ -1,6 +1,5 @@
 import React from "react";
 
-import { SignIn } from "@clerk/nextjs";
 import {
   Dialog,
   DialogContent,
@@ -24,7 +23,7 @@ const SignInModal: React.FC<SignInModalProps> = ({ isOpen, onClose }) => {
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Are you absolutely sure?</DialogTitle>
-         <SignIn></SignIn>
+       
         </DialogHeader>
       </DialogContent>
     </Dialog>

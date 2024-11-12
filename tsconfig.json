@@ -20,11 +20,12 @@
     "paths": {
       "@/*": ["./*"],
       "components/*": ["/components/*"],
+      "container/*": ["/container/*"],
       "types/*": ["/types/*"],
       "public*":["/public/*"],
       "store*":["/store/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prisma/seed.js"],
   "exclude": ["node_modules"]
 }

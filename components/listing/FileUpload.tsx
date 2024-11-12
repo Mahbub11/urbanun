@@ -1,34 +1,47 @@
-"use client";
 import React, { useState } from "react";
 import Image from "next/image";
 
 interface ImageProps {
-  setImages: (files: FileList) => void;
-  images: FileList[];
+  setImages: (files: File[]) => void;
+  images: File[];
+  uploadImage: () => void;
 }
 
-export default function FileUpload({ setImages, images }: ImageProps) {
+export default function FileUpload({
+  setImages,
+  images,
+  uploadImage,
+}: ImageProps) {
   const [imagePreview, setImagePreview] = useState<string[]>([]);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const files = event.target.files;
     if (files) {
-      setImages(files);
-      const previews = Array.from(files).map((file) =>
-        URL.createObjectURL(file)
-      );
-      setImagePreview(previews);
+      const _files = Array.from(files);
+      setImages(_files);
+      const previews = _files.map((file) => URL.createObjectURL(file));
+      setImagePreview((prev) => [...prev, ...previews]);
     }
   };
 
-  console.log(images)
+  const handleRemoveImage = (index: number) => {
+    const newImages = [...images];
+    const newPreviews = [...imagePreview];
+
+    newImages.splice(index, 1); // Remove the file from images
+    newPreviews.splice(index, 1); // Remove the preview
+
+    setImages(newImages);
+    setImagePreview(newPreviews);
+  };
 
   return (
     <div>
       <div className="mt-2 flex items-center justify-center w-full">
         <label
           htmlFor="dropzone-file"
-          className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+          className="flex flex-col items-center justify-center w-full
+           h-30 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
         >
           <div className="flex flex-col items-center justify-center pt-5 pb-6">
             <svg
@@ -40,9 +53,9 @@ export default function FileUpload({ setImages, images }: ImageProps) {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
               />
             </svg>
@@ -64,35 +77,37 @@ export default function FileUpload({ setImages, images }: ImageProps) {
           />
         </label>
       </div>
-      <div
-        className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5
-    lg:grid-cols-7 xl:grid-cols-10 gap-3 mt-3"
-      >
+      <div className="mt-5 md:mt-10 flex space-x-2 ">
         {imagePreview.map((image, index) => (
-          <div key={index}>
+          <div key={index} className="relative bg-white px-3 py-3">
             <Image
               src={image}
               width={100}
               height={100}
-              className="rounded-lg object-cover h-[100px] w-[100px]"
-              alt={`image-${index}`} // Fixed: Convert index to string
+              className=" rounded-md  object-cover h-[150px] w-[200px]"
+              alt={`image-${index}`}
             />
+            <div
+              className="flex-col justify-center space-y-1 mt-2 
+             rounded-md  w-full"
+            >
+              <button
+                className="text-white hover:underline  bg-red-400 px-1 py-1
+                rounded-sm w-full"
+                onClick={() => handleRemoveImage(index)}
+              >
+                Remove
+              </button>
+              <button
+                className="text-white hover:underline 
+                bg-blue-400 px-1 py-1 w-full rounded-sm"
+                onClick={() => uploadImage()}
+              >
+                Upload
+              </button>
+            </div>
           </div>
         ))}
-      </div>
-
-      <div>
-        {/* {images.map((image, index) => (
-          <div key={index}>
-            <Image
-              src={image?.name}
-              width={100}
-              height={100}
-              className="rounded-lg object-cover h-[100px] w-[100px]"
-              alt={`image-${index}`} // Fixed: Convert index to string
-            />
-          </div>
-        ))} */}
       </div>
     </div>
   );

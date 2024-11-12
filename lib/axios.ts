@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from "axios";
 
-const BASE_URL = "http://localhost:3000/api";
+export const BASE_URL = "http://localhost:3000/api";
 
 axios.defaults.withCredentials = true;
 const axiosInstance = axios.create({

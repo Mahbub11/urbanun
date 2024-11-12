@@ -1,49 +1,104 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  BUYER
+  AGENT
+  AGENCY
+  // Add other roles as needed
 }
 
 model User {
-  id    Int    @id @default(autoincrement())
-  name  String
-  email String @unique
+  id       String    @id @default(uuid())
+  name     String
+  email    String    @unique
+  password String
+  role     UserRole  @default(BUYER)
+  avatar   String?
+  listings Listing[]
+
+  Account Account[]
+  Session Session[]
+}
+
+model Account {
+  id                String @id @default(uuid())
+  userId            String
+  user              User   @relation(fields: [userId], references: [id])
+  provider          String
+  providerAccountId String
+}
+
+model Session {
+  id      String   @id @default(uuid())
+  userId  String
+  user    User     @relation(fields: [userId], references: [id])
+  expires DateTime
+}
+
+model PropertyCategory {
+  id       Int       @id @default(1)
+  name     String    @default("Apartment")
+  listings Listing[] // Relation to listings
+
+  created_at DateTime @default(now()) // Timestamp for creation
+  updated_at DateTime @updatedAt // Timestamp for updates
 }
 
 model Listing {
-  id                Int               @id @default(autoincrement())
-  address           String
-  coordinates       Json
-  title             String?
-  description       String?
-  price             Float?
-  property_features String?
-  size              String?
-  bed_rooms         String?
-  bath_rooms        String?
-  floor             String?
-  construction_year String?
-  created_at        DateTime          @updatedAt
-  images            property_images[]
+  id             Int               @id @default(autoincrement())
+  type           Int               @default(0)
+  categoryId     Int
+  category       PropertyCategory  @relation(fields: [categoryId], references: [id])
+  address        String
+  coordinates    Json
+  title          String
+  description    String
+  price          Float
+  bed_rooms      Int
+  bath_rooms     Int
+  area           Int
+  property_intro String
+  created_at     DateTime          @updatedAt
+  images         property_images[]
+  userId         String
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  features       PropertyFeature[] // Relation to features
+  floor_plans    floor_plan[]
+}
+
+model PropertyFeature {
+  id          Int     @id @default(autoincrement())
+  listingId   Int // Foreign key to Listing
+  featureName String
+  value       String // Value of the feature (e.g., '3', '1000 sqft', '2nd floor')
+  type        Int
+  listing     Listing @relation(fields: [listingId], references: [id])
 }
 
 model property_images {
-  id Int @id @default(autoincrement())
-
+  id        Int      @id @default(autoincrement())
   imageUrl  String
-  type      Int
+  order     Int      @default(0)
   createdAt DateTime @default(now())
 
-  Listing   Listing @relation(fields: [listingId], references: [id])
+  Listing   Listing @relation(fields: [listingId], references: [id], onDelete: Cascade)
   listingId Int
+}
+
+model floor_plan {
+  id         Int      @id @default(autoincrement())
+  imageUrl   String
+  floor_name String
+  order      Int
+  intro      String
+  createdAt  DateTime @default(now())
+  listingId  Int
+  Listing    Listing  @relation(fields: [listingId], references: [id], onDelete: Cascade)
 }

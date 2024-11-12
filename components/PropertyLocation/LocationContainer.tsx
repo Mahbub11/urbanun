@@ -10,19 +10,19 @@ import {
 } from "@/components/ui/dialog";
 import useLocationHolder from "@/store/useStore";
 import GoogleAddressSearch from "./GoogleAddressSearch";
-import { useUser } from "@clerk/nextjs";
 import { Button } from "../ui/button";
 import { Loader } from "lucide-react";
 import axiosInstance from "@/lib/axios";
 import { useRouter } from "next/navigation";
 
 export default function LocationContainer() {
-  const { showLocationContainer } = useLocationHolder();
+  const { showLocationContainer, ToggleLocationContainer } =
+    useLocationHolder();
   const [selectedAddress, setSelectedAddress] = useState<{
     label: string;
   }>();
 
-  const router= useRouter()
+  const router = useRouter();
   const [coordinates, setCoordinates] = useState<{
     lat: number;
     lng: number;
@@ -36,12 +36,16 @@ export default function LocationContainer() {
         address: selectedAddress.label,
         coordinates: coordinates,
       };
-      await axiosInstance.post('/property',data).then((res)=>{
-        console.log(res)
-      router.replace('/edit-listing/'+res.data.id);
-      }).catch((err)=>{
-        console.log(err)
-      })
+      await axiosInstance
+        .post("/property", data)
+        .then((res) => {
+          console.log(res);
+          router.replace("/edit-listing/" + res.data.id);
+          ToggleLocationContainer();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     }
   };
   console.log(selectedAddress);
