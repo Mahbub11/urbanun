@@ -49,7 +49,9 @@ const PropertyCardView: React.FC<PropertyListProps> = ({ property }) => {
         <div className="group relative overflow-hidden">
           <div className="w-full flex justify-between absolute top-5 z-10">
             <div className="bg-transparent/10 backdrop-blur-md px-3 py-1 rounded-r-sm">
-              <p className="font-[500] w-full text-white">sell</p>
+              <p className="font-[500] w-full text-white"></p>
+             <span className="text-white">
+               {property.type === 0 ? "Sell" : property.type === 1 ? "Rent" : ""}</span>
             </div>
             <div
               className="bg-transparent/10 
@@ -131,10 +133,10 @@ const PropertyCardView: React.FC<PropertyListProps> = ({ property }) => {
         <div className="mt-5">
           <div className="flex space-x-1">
             <MapPin size={20}></MapPin>
-            <p>{property.address}</p>
+            <p className="line-clamp-1">{property.address}</p>
           </div>
           <div className="ml-1 mt-3">
-            <h2 className="font-gvf text-[24px] font-[500]">
+            <h2 className="font-gvf text-[24px] font-[500] line-clamp-1">
               {property.title}
             </h2>
             <p className="line-clamp-2">{property.description}</p>

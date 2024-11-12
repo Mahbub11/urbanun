@@ -19,7 +19,7 @@ export default function SectionFiveBannar() {
           className="w-full h-full 
           sm:px-3 sm:py-5 flex justify-center md:space-x-[2rem] items-center
           "
-         >
+        >
           <div className="self-center sm:hidden md:block">
             <h2
               className="font-gvf sm:text-[30px] text-[65px] text-white 
@@ -34,7 +34,7 @@ export default function SectionFiveBannar() {
           </div>
 
           <div
-            className="h-[30rem] sm:absolute  backdrop-blur-sm bg-[#f5f8f59e] 
+            className="h-[30rem] sm:h-[35rem] sm:absolute  backdrop-blur-sm bg-[#f5f8f59e] 
            md:w-[35rem]  sm:w-[90%] self-center sm:px-5 md:ml-[-2rem] "
           >
             <div className="md:px-10 sm:px-3 py-5 ">
@@ -63,9 +63,9 @@ export default function SectionFiveBannar() {
                   placeholder="Your Phone Number"
                 ></input>
 
-                <div className="bg-yellow-200 w-fit overflow-hidden group">
+                <div className="bg-yellow-200 w-fit sm:w-full overflow-hidden group">
                   <button
-                    className="bg-yellow-300 relative px-3 py-3 font-[600]
+                    className="bg-yellow-300 sm:w-full relative px-3 py-3 font-[600]
                    overflow-hidden group"
                   >
                     <span className="relative z-10">Make an enquiry</span>

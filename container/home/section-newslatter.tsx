@@ -5,7 +5,7 @@ import React, { useEffect, useState, useRef } from "react";
 
 export default function SectionNewsLatter() {
   return (
-    <div className="md:px-5 px-2 font-montreal text-gray-800 ">
+    <div className="md:px-5 font-montreal text-gray-800 ">
       <div
         className="opacity-95 object-cover`"
         style={{
@@ -16,13 +16,13 @@ export default function SectionNewsLatter() {
         }}
       >
         <div
-          className="md:w-[70%] mx-auto h-full flex 
-          w-full sm:flex-col md:space-x-[2rem] items-center
+          className="md:w-[95%] lg:w-[80%] mx-auto h-full flex 
+          w-full sm:flex-col lg:space-x-[2rem] items-center
           "
         >
-          <div className="md:w-[60%] sm:text-center sm:mt-5">
+          <div className="md:w-[50%] sm:text-center sm:mt-5">
             <h2
-              className="font-gvf sm:text-[40px] text-[65px] text-white 
+              className="font-gvf sm:text-[40px] md:text-[45px] text-[65px] text-white 
               font-[700] leading-tight tracking-tight"
             >
               Discover a new<br></br> way of living
@@ -34,11 +34,11 @@ export default function SectionNewsLatter() {
           </div>
 
           <div
-            className="md:w-[50%] sm:w-[95%] sm:px-4 
+            className="md:flex-1 md:w-[50%] sm:w-[95%] sm:px-4 
             md:py-10 backdrop-blur-sm bg-[#f5f8f59e] 
-             md:ml-[-2rem] sm:mt-10"
-          >
-            <div className="md:px-10 py-5 ">
+             md:ml-[-2rem] sm:mt-10 sm:py-5"
+           >
+            <div className="md:px-10 py-5 sm:h-auto sm:w-full">
               <h2
                 className="font-gvf text-[35px] font-[600]
               "
@@ -50,12 +50,13 @@ export default function SectionNewsLatter() {
                 lowest commission on the real estate market.
               </p>
 
-              <div className="mt-10 flex">
-                <input className="flex-1 h-[3rem]"></input>
+              <div className="mt-10 w-full sm:h-full sm:flex-col
+               sm:space-y-2 flex ">
+                <input className="md:flex-1 md:h-[3rem] sm:h-[3rem]"></input>
 
-                <div className="flex-1 overflow-hidden group">
+                <div className="flex-1 sm:w-full overflow-hidden group">
                   <button
-                    className="bg-yellow-300 relative px-3 py-3 font-[600]
+                    className="bg-yellow-300 sm:w-full relative px-3 py-3 font-[600]
                    overflow-hidden group"
                   >
                     <span className="relative z-10">Make an enquiry</span>

@@ -120,7 +120,8 @@ const config = {
         sm: { min: "360px", max: "768px" },
         md: { min: "769px"},
         lg: { min: "1024px" },
-        xl: { min: "1491px" },
+        lg2: { min: "1260px" },
+        xl: { min: "1440px" },
       
       },
     },

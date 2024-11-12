@@ -18,7 +18,7 @@ export default function MakeRenovation() {
       className="sm:px-4 py-10
     md:px-10 md:w-[70%] sm:w-full md:py-5 mx-auto font-montreal text-gray-700"
     >
-      <div className="mt-[5rem] flex items-start w-full space-x-[5rem] ">
+      <div className="mt-[5rem] sm:mt-10 flex items-start w-full space-x-[5rem] ">
         <div>
           <h2 className="font-gvf sm:text-[30px] text-[40px] font-[500] leading-tight">
             Our expert will help you <br></br> make the

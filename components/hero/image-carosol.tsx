@@ -48,7 +48,7 @@ export default function HeroImageCarosol({
                   <Image
                     priority
                     className="rounded-md object-cover 
-                    md:h-[45rem] md:w-full"
+                    md:h-[45rem] md:w-full w-full sm:h-[40rem]"
                     width={500}
                     height={720}
                     src={variant.url}

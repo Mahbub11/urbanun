@@ -51,10 +51,14 @@ export default function HomeHero() {
     <div className="relative font-montreal  md:px-10">
       <HeroImageCarosol variants={propertyImages}></HeroImageCarosol>
 
-      <div className="absolute bottom-[8%] left-1/2 transform -translate-x-1/2">
-        <div className="h-[30rem] w-[80rem]  ">
+      <div
+        className="absolute w-full sm:px-5 lg2:px-[5rem] lg:px-[2rem]
+      xl:px-[10rem] sm:top-10  bottom-[15%] left-1/2 transform -translate-x-1/2"
+      >
+        <div className="w-full md:px-10">
           <h2
-            className="font-montreal text-[25px] md:text-[50px] lg:text-[80px] tracking-wider leading-[1]
+            className="w-full font-montreal sm:text-[45px] md:text-[50px] lg:text-[60px]
+            xl:text-[80px] tracking-wider leading-[1]
           font-[800] text-white "
           >
             Buy or rent properties <br></br>
@@ -62,7 +66,9 @@ export default function HomeHero() {
           </h2>
 
           <div className="mt-5">
-            <div className="h-10 px-5 rounded-t-md w-[20rem] text-[14px] font-montreal flex space-x-[1px] ml-10">
+            <div className="h-10 px-5
+             rounded-t-md w-[20rem] text-[14px] font-montreal
+              flex space-x-[1px] md:ml-10">
               <button
                 className={`w-full px-1 py-2 rounded-t-md bg-[#f5f8f59e] backdrop-blur-md
                  hover:bg-white/80 ${filters.type === "0" ? "bg-white" : ""}`}
@@ -91,9 +97,16 @@ export default function HomeHero() {
                 Sell
               </button>
             </div>
-            <div className="w-full h-[8rem] bg-[#f5f8f59e]  backdrop-blur-md rounded-md">
-              <div className="flex  space-x-5 items-center w-full h-full px-10 font-montreal font-[400]">
-                <div className="w-[65%] flex justify-between space-x-5 ">
+            <div
+              className="w-full sm:h-full sm:py-5 h-[8rem] bg-[#f5f8f59e] 
+             backdrop-blur-md rounded-md"
+            >
+              <div
+                className="flex sm:flex-col sm:space-y-3 md:space-x-5 items-center w-full 
+              h-full px-10 font-montreal font-[400]"
+              >
+                <div className="md:flex-1 lg:flex-auto lg:w-[65%] 
+                sm:w-full flex sm:flex-col sm:mt-5 sm:space-y-2 justify-between lg:space-x-5 ">
                   <div className="flex-1">
                     <Select
                       value={filters.category}
@@ -130,7 +143,8 @@ export default function HomeHero() {
                     </Select>
                   </div>
                 </div>
-                <div className="w-[35%] flex space-x-5 justify-between">
+                <div className="md:flex-1 lg:flex-auto sm:w-full lg:w-[35%] 
+                sm:flex-col sm:space-y-2 flex md:space-x-5 justify-between">
                   <div className="bg-yellow-200 w-full overflow-hidden group">
                     <button
                       onClick={() => setOpenDialog(true)}
@@ -161,7 +175,7 @@ export default function HomeHero() {
                           className="mt-[2px]"
                           strokeWidth="1.5px"
                         ></SearchIcon>
-                        <p>Search property</p>
+                        <p className="">Search property</p>
                       </span>
                       {/* Pseudo-element for filling effect */}
                       <span
@@ -184,3 +198,7 @@ export default function HomeHero() {
     </div>
   );
 }
+
+// h-[30rem] md:w-[45rem] lg:w-[75rem] lg2:w-[90rem]
+//          md:px-10 lg:px-[10rem]
+//         xl:px-[8rem]

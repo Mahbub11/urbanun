@@ -41,14 +41,15 @@ export default function SectionSixBannar() {
   }, [hasTransited]);
 
   return (
-    <div className="md:px-5 px-2 font-montreal text-gray-700">
+    <div className="md:px-5  font-montreal text-gray-700">
       <div className={`w-full md:py-10 bg-[#EDF9F9]`}>
         <div className="sm:w-full md:w-[70%] sm:px-5 py-[5rem] mx-auto" ref={sectionRef}>
-          <div className="w-full flex sm:flex-col justify-center md:space-x-[5rem] items-center">
+          <div className="w-full flex sm:flex-col justify-center
+           md:space-x-[5rem] items-center">
             <div className="md:h-[25rem] md:w-[50rem] relative md:block">
               {/* Yellow background div */}
               <div
-                className={`absolute sm:hidden rounded-sm w-full h-full bg-yellow-400 mt-10 ml-[-1rem] transform transition-all duration-1200 ${
+                className={`absolute sm:hidden rounded-sm w-full h-full bg-yellow-400 md:mt-10 ml-[-1rem] transform transition-all duration-1200 ${
                   hasTransited
                     ? "translate-x-0 translate-y-[13px]" // Position once transition has happened
                     : inView
@@ -61,7 +62,7 @@ export default function SectionSixBannar() {
               <div className="relative z-10">
                 <Image
                   alt="kkk"
-                  className="rounded-sm w-full md:h-[25rem] object-cover mt-10 sm:mt-5 shadow-sm"
+                  className="rounded-sm w-full md:h-[25rem] object-cover md:mt-10 sm:mt-5 shadow-sm"
                   src={homeLoan}
                   height={300}
                   width={400}

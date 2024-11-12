@@ -37,7 +37,7 @@ interface PropertyListProps {
 export default function PropertyListingPage({ properties }: PropertyListProps) {
   const queryClient = useQueryClient();
   queryClient.setQueryData(["properties"], properties);
-  
+
   const { filters, updateFilters, filteredProperties } = useFilters();
   const [page, setPage] = useState(1);
   const limit = 6; // Set limit to 6 per page
@@ -190,15 +190,23 @@ export default function PropertyListingPage({ properties }: PropertyListProps) {
 
         {/* Property List */}
         <div className="flex-1 h-auto">
-          <div className="h-auto w-full">
-            <div className="grid grid-cols-3 sm:grid-cols-1 gap-x-2 gap-y-10">
-              {currentProperties.map((data, index) => {
-                return (
+          <div className="h-auto w-full relative">
+            <div className="grid md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 sm:grid-cols-1 gap-x-2 gap-y-10">
+              {currentProperties.length > 0 ? (
+                currentProperties.map((data, index) => (
                   <div key={index}>
-                    <PropertyCardView property={data}></PropertyCardView>
+                    <PropertyCardView property={data} />
                   </div>
-                );
-              })}
+                ))
+              ) : (
+                <div
+                  className="w-full h-full absolute
+                 md:top-1/2 left-1/2 transform -translate-x-1/2 
+                 -translate-y-1/2 flex justify-center items-center"
+                >
+                  <h2 className="text-[30px] sm:py-10 md:mt-[10rem]">No Property Found!</h2>
+                </div>
+              )}
             </div>
           </div>
         </div>

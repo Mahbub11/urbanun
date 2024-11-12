@@ -38,17 +38,18 @@ export default async function PopularChoice() {
   }
   return (
     <div
-      className=" md:px-10 md:w-[80%] sm:w-full sm:px-4  md:py-5 mx-auto 
+      className=" md:px-10 md:w-[90%] lg2:w-[80%] sm:w-full sm:px-4  md:py-5 mx-auto 
      font-montreal text-gray-700"
     >
       <h2 className="font-gvf text-[40px] font-[400] leading-tight">
         Our choice of popular <br />
         <span className="font-[600] text-yellow-500">Real Estate</span>
       </h2>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-x-2 gap-y-10 mt-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-2 
+      gap-y-10 mt-10 w-full h-full">
         {listings.slice(0,6).map((data, index) => {
           return (
-            <div key={index}>
+            <div className="h-full" key={index}>
               <PropertyCardView property={data}></PropertyCardView>
             </div>
           );
