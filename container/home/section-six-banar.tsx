@@ -1,6 +1,7 @@
 "use client";
 import { homeLoan, sectionThreeBannar } from "@/public";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useState, useRef } from "react";
 
 export default function SectionSixBannar() {
@@ -43,9 +44,14 @@ export default function SectionSixBannar() {
   return (
     <div className="md:px-5  font-montreal text-gray-700">
       <div className={`w-full md:py-10 bg-[#EDF9F9]`}>
-        <div className="sm:w-full md:w-[70%] sm:px-5 py-[5rem] mx-auto" ref={sectionRef}>
-          <div className="w-full flex sm:flex-col justify-center
-           md:space-x-[5rem] items-center">
+        <div
+          className="sm:w-full md:w-[70%] sm:px-5 py-[5rem] mx-auto"
+          ref={sectionRef}
+        >
+          <div
+            className="w-full flex sm:flex-col justify-center
+           md:space-x-[5rem] items-center"
+          >
             <div className="md:h-[25rem] md:w-[50rem] relative md:block">
               {/* Yellow background div */}
               <div
@@ -86,18 +92,25 @@ export default function SectionSixBannar() {
                   ferri dicam contentiones ne, ex appetere salutatus
                 </p>
 
-                <div className=" w-fit overflow-hidden group mt-5">
-                  <button
-                    className="bg-[#A9DE74] relative px-3 py-3 font-[600]
-                   overflow-hidden group"
+                <div className="mt-5">
+                  <Link
+                    href={"/property"}
+                    className="bg-[#A9DE74]  w-fit
+                   sm:w-full overflow-hidden group "
                   >
-                    <span className="relative z-10">Make an enquiry</span>
-                    {/* Pseudo-element for filling effect */}
-                    <span
-                      className="absolute inset-0 bg-[#8ACE46] group-hover:w-full 
+                    <button
+                      className="bg-[#A9DE74]  sm:w-full
+                     relative px-5 py-3 font-[600]
+                   overflow-hidden group"
+                    >
+                      <span className="relative z-10">Search Property</span>
+                      {/* Pseudo-element for filling effect */}
+                      <span
+                        className="absolute inset-0 bg-[#8ACE46] group-hover:w-full 
                     transition-all duration-[1500ms] w-0"
-                    ></span>
-                  </button>
+                      ></span>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

@@ -9,7 +9,7 @@ import {
 import { brandFive, brandFour, brandOne, brandThree, brandTwo } from "@/public";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import Autoplay from "embla-carousel-autoplay"
+import Autoplay from "embla-carousel-autoplay";
 
 const brands = [
   {
@@ -97,7 +97,7 @@ export default function BrandShow() {
   }, [api]);
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true })
-  )
+  );
   return (
     <div className="md:px-5 px-2 font-montreal text-gray-800 py-10">
       <div className="md:h-[15rem] mt-[-4rem] w-full bg-[#FFCC41]">
@@ -111,12 +111,17 @@ export default function BrandShow() {
             <CarouselContent className=" flex space-x-5 md:mt-[3.5rem] sm:py-5">
               {brands.map((variant) => {
                 return (
-                  <CarouselItem className="md:basis-[10rem] 
-                  flex justify-center w-full" key={variant.id}>
+                  <CarouselItem
+                    className="md:basis-[15rem] 
+                  flex justify-center w-full group"
+                    key={variant.id}
+                  >
                     {variant.image ? (
                       <Image
                         priority
-                        className="rounded-md object-cover h-auto w-auto"
+                        className="rounded-md object-cover h-auto w-auto
+                        transform translate-x-0
+                   group-hover:-translate-y-2 duration-300 cursor-pointer"
                         width={500}
                         height={720}
                         src={variant.image}

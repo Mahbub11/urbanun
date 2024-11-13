@@ -204,7 +204,9 @@ export default function PropertyListingPage({ properties }: PropertyListProps) {
                  md:top-1/2 left-1/2 transform -translate-x-1/2 
                  -translate-y-1/2 flex justify-center items-center"
                 >
-                  <h2 className="text-[30px] sm:py-10 md:mt-[10rem]">No Property Found!</h2>
+                  <h2 className="text-[30px] sm:py-10 md:mt-[10rem]">
+                    No Property Found!
+                  </h2>
                 </div>
               )}
             </div>

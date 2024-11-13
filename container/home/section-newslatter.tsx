@@ -37,29 +37,34 @@ export default function SectionNewsLatter() {
             className="md:flex-1 md:w-[50%] sm:w-[95%] sm:px-4 
             md:py-10 backdrop-blur-sm bg-[#f5f8f59e] 
              md:ml-[-2rem] sm:mt-10 sm:py-5"
-           >
+          >
             <div className="md:px-10 py-5 sm:h-auto sm:w-full">
               <h2
                 className="font-gvf text-[35px] font-[600]
               "
               >
-                Make an enquiry
+                Sign to newsletter
               </h2>
               <p className=" mt-2  mx-auto">
                 Save your time and easily rent or sell your property with the
                 lowest commission on the real estate market.
               </p>
 
-              <div className="mt-10 w-full sm:h-full sm:flex-col
-               sm:space-y-2 flex ">
-                <input className="md:flex-1 md:h-[3rem] sm:h-[3rem]"></input>
+              <div
+                className="mt-10 w-full sm:h-full sm:flex-col
+               sm:space-y-2 flex "
+              >
+                <input
+                  placeholder="Your Email "
+                  className="px-5 md:flex-1 md:h-[3rem] sm:h-[3rem]"
+                ></input>
 
                 <div className="flex-1 sm:w-full overflow-hidden group">
                   <button
                     className="bg-yellow-300 sm:w-full relative px-3 py-3 font-[600]
                    overflow-hidden group"
                   >
-                    <span className="relative z-10">Make an enquiry</span>
+                    <span className="relative z-10">Sign Up</span>
                     {/* Pseudo-element for filling effect */}
                     <span
                       className="absolute inset-0 bg-yellow-400 group-hover:w-full 
