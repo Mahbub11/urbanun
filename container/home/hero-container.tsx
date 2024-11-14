@@ -9,7 +9,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { useQueryFilters } from "@/hooks/usePropertyQueryOnUrl";
-import { PropertyImages } from "@/types/prisma-data-type";
 import { SearchIcon, Settings2 } from "lucide-react";
 import React, { useState } from "react";
 import {
@@ -23,20 +22,47 @@ import {
 import { PropertyFeatureCheckbox } from "@/components/checkbox/multiple-checkbox-holder";
 import AdvancedSearchDialog from "./dialog-container/advanced-search-dialog";
 import { usePathname, useRouter } from "next/navigation";
+import { bannarFour, bannarOne, bannarThree, bannarTwo } from "@/public";
+import { StaticImageData } from "next/image";
 
+ interface PropertyImage {
+  id: number;
+  url: StaticImageData;
+  order: number;
+  altText:string
+}
 export default function HomeHero() {
   const pathname = usePathname();
   const router = useRouter();
   const [openDialog, setOpenDialog] = useState(false);
   const { filters, updateQuryFilters } = useQueryFilters();
-  const propertyImages: PropertyImages[] = Array.from(
-    { length: 10 },
-    (_, index) => ({
-      id: index + 1, // Assign an ID starting from 1
-      url: `https://picsum.photos/1200/675?v=${index}`, // Generate the URL dynamically
-      altText: `Image description for image ${index + 1}`, // Sample alt text
-    })
-  );
+  const propertyImages: PropertyImage[] = [
+   {
+    id:1,
+    url:bannarOne,
+    altText:"fffff",
+    order:1
+   },
+   {
+    id:2,
+    url:bannarTwo,
+    altText:"fffff",
+    order:2
+   },
+   {
+    id:3,
+    url:bannarThree,
+    altText:"fffff",
+    order:3
+   },
+   {
+    id:4,
+    url:bannarFour,
+    altText:"fffff",
+    order:4
+   },
+  
+  ]
 
   const handleOpenChange = (open: boolean) => {
     setOpenDialog(open);

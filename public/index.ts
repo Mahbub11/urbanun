@@ -23,3 +23,9 @@ export { default as brandTwo } from './Images/brand_two.png';
 export { default as brandThree } from './Images/brand_three.png';
 export { default as brandFour } from './Images/brand_six.png';
 export { default as brandFive } from './Images/brand_seven.png';
+
+//
+export { default as bannarOne } from './Images/bannar_one.jpg';
+export { default as bannarTwo } from './Images/bannar_two.jpg';
+export { default as bannarThree } from './Images/bannar_three.jpg';
+export { default as bannarFour } from './Images/bannar_four.jpg';

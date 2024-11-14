@@ -10,14 +10,20 @@ import {
 } from "@/components/ui/carousel";
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { cn } from "@/lib/utils";
 import { PropertyImages } from "@/types/prisma-data-type";
 
+interface PropertyImage {
+  id: number;
+  url: StaticImageData;
+  order: number;
+  altText:string
+}
 export default function HeroImageCarosol({
   variants,
 }: {
-  variants: PropertyImages[];
+  variants: PropertyImage[];
 }) {
   const [api, setApi] = useState<CarouselApi>();
   const [activeThumbnail, setActiveThumbnail] = useState([0]);
@@ -63,7 +69,7 @@ export default function HeroImageCarosol({
           <div className="flex justify-center overflow-clip py-2 gap-4 mt-5">
             {variants.map((variant, index) => {
               return (
-                <div key={variant.url}>
+                <div key={variant.id}>
                   {variant.url ? (
                     <div
                       onClick={() => updatePreview(index)}
@@ -71,7 +77,7 @@ export default function HeroImageCarosol({
                         index === activeThumbnail[0]
                           ? "opacity-100"
                           : "opacity-75",
-                        "rounded-full transition-all bg-custom-btn_color h-2 w-2 duration-300 ease-in-out cursor-pointer hover:opacity-75"
+                        "rounded-full transition-all bg-yellow-500 h-2 w-2 duration-300 ease-in-out cursor-pointer hover:opacity-75"
                       )}
                     ></div>
                   ) : null}
