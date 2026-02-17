@@ -31,18 +31,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
- 
-      <html lang="en">
-        <body className="">
-          <NavBar></NavBar>
-          <Toaster></Toaster>
-          <div className="mt-[5.7rem] ">
-            <Suspense fallback={<LoadingSpinner></LoadingSpinner>}>
-              <ContentLayout> {children}</ContentLayout>
-            </Suspense>
-          </div>
-        </body>
-      </html>
-    
+    <html lang="en">
+      <body className="">
+        <NavBar></NavBar>
+        <Toaster></Toaster>
+        <div className="mt-[5.7rem] ">
+          <Suspense fallback={<LoadingSpinner></LoadingSpinner>}>
+            <ContentLayout> {children}</ContentLayout>
+          </Suspense>
+        </div>
+      </body>
+    </html>
   );
 }

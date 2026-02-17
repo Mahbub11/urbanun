@@ -34,7 +34,7 @@ export default async function ComparePage() {
   }
   return (
     <div>
-      <h1 className="text-3xl font-bold">Compare Real Estate Properties</h1>
+      <h1 className="text-3xl font-bold">Compare all the properties</h1>
       <PropertyComparison properties={listings} />
     </div>
   );

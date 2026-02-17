@@ -46,7 +46,7 @@ export default function Onboarding() {
 
   return (
     <div className="max-w-md mx-auto p-6 border border-gray-300 rounded-lg shadow-lg">
-      <h2 className="text-xl font-semibold mb-4">Onboarding</h2>
+      <h2 className="text-xl font-semibold mb-4">Onboarding Process</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <Label
