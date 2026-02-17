@@ -54,7 +54,7 @@ export default async function Page({ params }: { params: { id: string } }) {
     <div className="px-10 py-5 sm:w-full md:w-[90%] mx-auto">
       <div>
         <h1 className="text-[25px] font-bold font-moder">
-          Property Information
+          Property Information Showing
         </h1>
       </div>
       {/* <EditListingContainer id={parseData!}></EditListingContainer> */}
