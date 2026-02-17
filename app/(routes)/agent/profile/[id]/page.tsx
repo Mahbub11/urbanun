@@ -71,7 +71,7 @@ export default async function page() {
                   <hr className="mt-2"></hr>
 
                   <div className="flex justify-between">
-                    <h2 className="font-medium">Office phone No:</h2>
+                    <h2 className="font-medium">Office phone:</h2>
                     <p>+1234567889</p>
                   </div>
                   <hr className="mt-2"></hr>

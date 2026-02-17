@@ -92,7 +92,7 @@ export default async function page() {
             <div className="bg-white px-5 py-5 mb:w-full mt-10">
               <h2 className="text-[25px] font-medium">Feel free to write me</h2>
               <p className="mt-5">
-                Save your time and easily rent or sell your property with the
+                Save your time and easily rent-sell your property with the
                 lowest commission on the real estate
               </p>
               <div className="mt-5">
