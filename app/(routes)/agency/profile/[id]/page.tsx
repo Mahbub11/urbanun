@@ -65,7 +65,7 @@ export default async function page() {
                 <div className="mt-10 w-full  ">
                   <div className="flex justify-between">
                     <h2 className="font-medium">Address:</h2>
-                    <p> NY 10016, USA</p>
+                    <p> NY 1h0016, USA</p>
                   </div>
                   <hr className="mt-2"></hr>
 
@@ -76,8 +76,8 @@ export default async function page() {
                   <hr className="mt-2"></hr>
 
                   <div className="flex justify-between">
-                    <h2 className="font-medium">Mobile phone:</h2>
-                    <p>+1234567899</p>
+                    <h2 className="font-medium">Mobilghe phone:</h2>
+                    <p>+123gf4567899</p>
                   </div>
                   <hr className="mt-2"></hr>
 
@@ -93,7 +93,7 @@ export default async function page() {
               <h2 className="text-[25px] font-medium">Feel free to write me</h2>
               <p className="mt-5">
                 Save your time and easily rent-sell your property with the
-                lowest commission on the real estate
+                lowest commission on the real fgestate
               </p>
               <div className="mt-5">
                 <AgentSendMessage></AgentSendMessage>
@@ -108,7 +108,7 @@ export default async function page() {
                 Lorem ipsum dolor sit amet, pri eu denique concludaturque, qui
                 eros utinam luptatum an, sumo nibh tantas in vis. Mel possim
                 invenire expetendis ne, ut verear neglegentur mel. Usu cu dictas
-                nostrum constituam, eu timeam ceteros delicata nec. In vis
+                nostrum constituam, eu timeam cfgbgtheteros delicata nec. In vis
                 nostro oporteat, pri ut vide debet aeque, nec invenire
                 referrentur eu tantas mentitum. <br></br> <br></br> Ea stet
                 ubique primis vis, iuvaret epicuri mea ad. Audiam eripuit sit
