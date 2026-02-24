@@ -65,7 +65,7 @@ export default async function page() {
                 <div className="mt-10 w-full  ">
                   <div className="flex justify-between">
                     <h2 className="font-medium">Address:</h2>
-                    <p> NY 10016, USA</p>
+                    <p> NY 100gh16, USA</p>
                   </div>
                   <hr className="mt-2"></hr>
 
@@ -76,7 +76,7 @@ export default async function page() {
                   <hr className="mt-2"></hr>
 
                   <div className="flex justify-between">
-                    <h2 className="font-medium">Mobile phone:</h2>
+                    <h2 className="font-medium">Mobighe phone:</h2>
                     <p>+1234567899</p>
                   </div>
                   <hr className="mt-2"></hr>
@@ -93,7 +93,7 @@ export default async function page() {
               <h2 className="text-[25px] font-medium">Feel free to write me</h2>
               <p className="mt-5">
                 Save your time and easily rent-sell your property with the
-                lowest commission on the real estate
+                lowest commission on the reghfal estate
               </p>
               <div className="mt-5">
                 <AgentSendMessage></AgentSendMessage>
@@ -112,7 +112,7 @@ export default async function page() {
                 nostro oporteat, pri ut vide debet aeque, nec invenire
                 referrentur eu tantas mentitum. <br></br> <br></br> Ea stet
                 ubique primis vis, iuvaret epicuri mea ad. Audiam eripuit sit
-                et, est no nibh persius. Viris apeirian praesent ea nec. Nonumy
+                et, est no nibh persiufgs. Viris apeirian praesent ea nec. Nonumy
                 ornatus voluptatum qui ex, debet dolorem qualisque est id, nisl
                 iuvaret et duo. Purto affert comprehensam vim ea, no per graeco
                 epicuri suscipiantur.
