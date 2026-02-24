@@ -65,7 +65,7 @@ export default async function page() {
                 <div className="mt-10 w-full  ">
                   <div className="flex justify-between">
                     <h2 className="font-medium">Address:</h2>
-                    <p> NY 10f016, USA</p>
+                    <p> NY 10016, USA</p>
                   </div>
                   <hr className="mt-2"></hr>
 
@@ -83,7 +83,7 @@ export default async function page() {
 
                   <div className="flex justify-between">
                     <h2 className="font-medium">Email:</h2>
-                    <p>newhome@qodeinteracdftive.com</p>
+                    <p>newhome@qodeinteractive.com</p>
                   </div>
                   <hr className="mt-2"></hr>
                 </div>
@@ -92,7 +92,7 @@ export default async function page() {
             <div className="bg-white px-5 py-5 mb:w-full mt-10">
               <h2 className="text-[25px] font-medium">Feel free to write me</h2>
               <p className="mt-5">
-                Save your time and easily rdfent-sell your property with the
+                Save your time and easily rent-sell your property with the
                 lowest commission on the real estate
               </p>
               <div className="mt-5">
@@ -108,12 +108,12 @@ export default async function page() {
                 Lorem ipsum dolor sit amet, pri eu denique concludaturque, qui
                 eros utinam luptatum an, sumo nibh tantas in vis. Mel possim
                 invenire expetendis ne, ut verear neglegentur mel. Usu cu dictas
-                nostrum constituam, eu timeadfm ceteros delicata nec. In vis
+                nostrum constituam, eu timeam ceteros delicata nec. In vis
                 nostro oporteat, pri ut vide debet aeque, nec invenire
                 referrentur eu tantas mentitum. <br></br> <br></br> Ea stet
                 ubique primis vis, iuvaret epicuri mea ad. Audiam eripuit sit
                 et, est no nibh persius. Viris apeirian praesent ea nec. Nonumy
-                ornatus voluptatum qui ex, debet dolosdfrem qualisque est id, nisl
+                ornatus voluptatum qui ex, debet dolorem qualisque est id, nisl
                 iuvaret et duo. Purto affert comprehensam vim ea, no per graeco
                 epicuri suscipiantur.
               </p>
