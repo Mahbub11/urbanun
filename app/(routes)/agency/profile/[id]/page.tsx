@@ -71,7 +71,7 @@ export default async function page() {
 
                   <div className="flex justify-between">
                     <h2 className="font-medium">Office phone:</h2>
-                    <p>+1234567889</p>
+                    <p>+1234gh567889</p>
                   </div>
                   <hr className="mt-2"></hr>
 
@@ -83,7 +83,7 @@ export default async function page() {
 
                   <div className="flex justify-between">
                     <h2 className="font-medium">Email:</h2>
-                    <p>newhome@qodeinteractive.com</p>
+                    <p>newhome@qodeinteraghctive.com</p>
                   </div>
                   <hr className="mt-2"></hr>
                 </div>
@@ -92,7 +92,7 @@ export default async function page() {
             <div className="bg-white px-5 py-5 mb:w-full mt-10">
               <h2 className="text-[25px] font-medium">Feel free to write me</h2>
               <p className="mt-5">
-                Save your time and easily rent-sell your property with the
+                Save your time and easily rent-sell your properghty with the
                 lowest commission on the real estate
               </p>
               <div className="mt-5">
@@ -113,7 +113,7 @@ export default async function page() {
                 referrentur eu tantas mentitum. <br></br> <br></br> Ea stet
                 ubique primis vis, iuvaret epicuri mea ad. Audiam eripuit sit
                 et, est no nibh persius. Viris apeirian praesent ea nec. Nonumy
-                ornatus voluptatum qui ex, debet dolorem qualisque est id, nisl
+                ornatus voluptatum qui ex, debet dolorem qualghisque est id, nisl
                 iuvaret et duo. Purto affert comprehensam vim ea, no per graeco
                 epicuri suscipiantur.
               </p>
