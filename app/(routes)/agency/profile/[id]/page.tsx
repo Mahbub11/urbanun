@@ -90,9 +90,9 @@ export default async function page() {
               </div>
             </div>
             <div className="bg-white px-5 py-5 mb:w-full mt-10">
-              <h2 className="text-[25px] font-medium">Feel freefg to write me</h2>
+              <h2 className="text-[25px] font-medium">Feel free to write me</h2>
               <p className="mt-5">
-                Save your time and easily rent-sell yodfgur property with the
+                Save your time and easily rent-sell your property with the
                 lowest commission on the real estate
               </p>
               <div className="mt-5">
@@ -107,7 +107,7 @@ export default async function page() {
               <p>
                 Lorem ipsum dolor sit amet, pri eu denique concludaturque, qui
                 eros utinam luptatum an, sumo nibh tantas in vis. Mel possim
-                invenire expetendis ne, ut verxdvear neglegentur mel. Usu cu dictas
+                invenire expetendis ne, ut verear neglegentur mel. Usu cu dictas
                 nostrum constituam, eu timeam ceteros delicata nec. In vis
                 nostro oporteat, pri ut vide debet aeque, nec invenire
                 referrentur eu tantas mentitum. <br></br> <br></br> Ea stet
